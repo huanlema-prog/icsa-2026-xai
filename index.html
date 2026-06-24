@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Architecting Explainability in CSE · ICSA 2026</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecting Explainability in CSE · ICSA 2026</title>
 
-<!-- Open Graph / LinkedIn / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Architecting Explainability in Continuous Software Engineering: Governing Its Shadow Impacts">
-<meta property="og:description" content="A 90-minute working session at ICSA 2026 reframing explainable AI as a resource-consuming architectural quality attribute — and building the governance vocabulary to manage it.">
-<meta property="og:image" content="https://huanlema-prog.github.io/icsa-2026-xai/og-image.png">
-<meta property="og:url" content="https://huanlema-prog.github.io/icsa-2026-xai/">
-<meta property="og:site_name" content="Architecting Explainability in CSE · ICSA 2026">
+  <!-- Open Graph / LinkedIn / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title"
+    content="Architecting Explainability in Continuous Software Engineering: Governing Its Shadow Impacts">
+  <meta property="og:description"
+    content="A 90-minute working session at ICSA 2026 reframing explainable AI as a resource-consuming architectural quality attribute — and building the governance vocabulary to manage it.">
+  <meta property="og:image" content="https://huanlema-prog.github.io/icsa-2026-xai/og-image.png">
+  <meta property="og:url" content="https://huanlema-prog.github.io/icsa-2026-xai/">
+  <meta property="og:site_name" content="Architecting Explainability in CSE · ICSA 2026">
 
-<!-- Twitter / X card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Architecting Explainability in CSE: Governing Its Shadow Impacts · ICSA 2026">
-<meta name="twitter:description" content="A 90-minute working session reframing XAI as an architectural quality attribute. ICSA 2026, Vrije Universiteit Amsterdam.">
-<meta name="twitter:image" content="https://huanlema-prog.github.io/icsa-2026-xai/og-image.png">
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Architecting Explainability in CSE: Governing Its Shadow Impacts · ICSA 2026">
+  <meta name="twitter:description"
+    content="A 90-minute working session reframing XAI as an architectural quality attribute. ICSA 2026, Vrije Universiteit Amsterdam.">
+  <meta name="twitter:image" content="https://huanlema-prog.github.io/icsa-2026-xai/og-image.png">
 
-<!-- Schema.org structured data -->
-<script type="application/ld+json">
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Event",
@@ -44,503 +48,1470 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.65;color:#111;background:#fff;-webkit-font-smoothing:antialiased;}
-:root{
-  --ink:#111111;--ink2:#555555;--ink3:#999999;
-  --page:#ffffff;--warm:#F7F6F4;--rule:#E6E6E6;
-  --accent:#1A5CCC;--accent-h:#0F3D99;
-  --serif:'Libre Baskerville',Georgia,serif;
-  --sans:'Inter',system-ui,sans-serif;
-  --mono:'JetBrains Mono',monospace;
-  --max:700px;--pad:40px;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--rule);padding:0 var(--pad);height:52px;display:flex;align-items:center;justify-content:space-between;}
-.nav-wordmark{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:-.01em;white-space:nowrap;}
-.nav-links{display:flex;gap:28px;list-style:none;}
-.nav-links a{font-size:13px;color:var(--ink2);text-decoration:none;padding-bottom:2px;border-bottom:1.5px solid transparent;transition:color .12s,border-color .12s;}
-.nav-links a:hover{color:var(--ink);}
-.nav-links a.active{color:var(--ink);border-bottom-color:var(--ink);}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* SHARE */
-.nav-share{position:relative;}
-.nav-share-btn{font-size:13px;font-weight:500;color:var(--ink2);background:transparent;border:1px solid var(--rule);border-radius:0;padding:6px 14px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:border-color .12s,color .12s;white-space:nowrap;font-family:var(--sans);}
-.nav-share-btn:hover{border-color:var(--ink2);color:var(--ink);}
-.share-icon{width:13px;height:13px;flex-shrink:0;}
-.share-dropdown{position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid var(--rule);min-width:200px;box-shadow:0 4px 16px rgba(0,0,0,0.08);display:none;flex-direction:column;z-index:200;}
-.share-dropdown.open{display:flex;}
-.share-dropdown-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);padding:12px 16px 8px;border-bottom:1px solid var(--rule);}
-.share-item{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:13px;color:var(--ink2);text-decoration:none;cursor:pointer;border:none;background:transparent;width:100%;text-align:left;font-family:var(--sans);transition:background .1s,color .1s;}
-.share-item:hover{background:var(--warm);color:var(--ink);}
-.share-item svg{width:15px;height:15px;flex-shrink:0;}
-.share-divider{border:none;border-top:1px solid var(--rule);}
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #111;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* CONTAINER */
-.c{max-width:var(--max);margin:0 auto;padding:0 var(--pad);}
-.lbl{display:block;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--ink3);letter-spacing:.09em;text-transform:uppercase;margin-bottom:20px;}
+    :root {
+      --ink: #111111;
+      --ink2: #555555;
+      --ink3: #999999;
+      --page: #ffffff;
+      --warm: #F7F6F4;
+      --rule: #E6E6E6;
+      --accent: #1A5CCC;
+      --accent-h: #0F3D99;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --max: 700px;
+      --pad: 40px;
+    }
 
-/* HERO */
-.hero{padding:80px 0 72px;border-bottom:1px solid var(--rule);}
-.hero h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,46px);font-weight:400;line-height:1.15;letter-spacing:-.02em;color:var(--ink);margin-bottom:10px;max-width:600px;}
-.hero-subtitle{font-family:var(--serif);font-size:clamp(16px,2.2vw,20px);font-weight:400;font-style:italic;color:var(--ink2);line-height:1.4;border-left:2px solid var(--rule);padding-left:18px;margin:18px 0 28px;max-width:540px;}
-.hero-lead{font-size:15px;color:var(--ink2);line-height:1.65;max-width:540px;margin-bottom:32px;}
-.hero-pills{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:28px;}
-.hero-pill{font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid rgba(26,92,204,0.3);padding-bottom:1px;transition:border-color .12s;}
-.hero-pill:hover{border-color:var(--accent);}
-.hero-meta{display:flex;gap:0;flex-wrap:wrap;margin-bottom:28px;}
-.hm{font-family:var(--mono);font-size:11px;padding:5px 12px;border:1px solid var(--rule);color:var(--ink2);margin-right:-1px;}
-.hm strong{color:var(--ink);}
-.hero-share{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.hero-share-label{font-size:13px;color:var(--ink3);}
-.share-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--ink2);text-decoration:none;border:1px solid var(--rule);border-radius:0;padding:6px 13px;cursor:pointer;background:transparent;font-family:var(--sans);transition:border-color .12s,color .12s;}
-.share-btn:hover{border-color:var(--ink2);color:var(--ink);}
-.share-btn svg{width:13px;height:13px;flex-shrink:0;}
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--rule);
+      padding: 0 var(--pad);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-/* SECTIONS */
-.sec{padding:72px 0;border-bottom:1px solid var(--rule);}
-.sec-warm{background:var(--warm);}
-.sec:last-of-type{border-bottom:none;}
-.sec h2{font-family:var(--serif);font-size:clamp(20px,3vw,28px);font-weight:400;line-height:1.2;color:var(--ink);margin-bottom:20px;max-width:540px;}
-.sec-intro{font-size:15px;color:var(--ink2);line-height:1.65;max-width:520px;margin-bottom:48px;}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 32px;}
-.gi-lbl{display:block;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;}
-.gi h3{font-family:var(--serif);font-size:17px;font-weight:400;color:var(--ink);line-height:1.3;margin-bottom:8px;}
-.gi p{font-size:13px;color:var(--ink2);line-height:1.6;}
-.defn{border-left:2px solid var(--rule);padding-left:20px;margin:32px 0;}
-.defn p{font-family:var(--serif);font-size:15px;color:var(--ink2);line-height:1.7;font-style:italic;}
-.qlist{display:flex;flex-direction:column;gap:0;}
-.qi{padding:24px 0;border-bottom:1px solid var(--rule);}
-.qi:last-child{border-bottom:none;}
-.qi-lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;}
-.qi p{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--ink);line-height:1.5;font-style:italic;}
+    .nav-wordmark {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+    }
 
-/* EVIDENCE */
-.evidence-list{display:flex;flex-direction:column;gap:0;}
-.ev{padding:32px 0;border-bottom:1px solid var(--rule);}
-.ev:last-child{border-bottom:none;}
-.ev-badge{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;}
-.ev-award{display:inline-block;margin-left:10px;font-family:var(--mono);font-size:10px;background:#FFF8E1;color:#7A5200;padding:1px 7px;letter-spacing:.03em;}
-.ev h3{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--ink);line-height:1.25;margin-bottom:8px;}
-.ev-source{font-size:12px;color:var(--ink3);margin-bottom:16px;font-style:italic;}
-.ev p.body{font-size:14px;color:var(--ink2);line-height:1.65;max-width:520px;}
-.ev-impact{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 20px;margin-top:28px;}
-.ei{border-top:1px solid var(--rule);padding-top:14px;}
-.ei-lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px;}
-.ei p{font-size:13px;color:var(--ink2);line-height:1.5;}
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
 
-/* AGENDA */
-.agenda-list{display:flex;flex-direction:column;gap:0;}
-.ai{display:grid;grid-template-columns:110px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--rule);}
-.ai:last-child{border-bottom:none;}
-.ai-time{font-family:var(--mono);font-size:12px;color:var(--ink3);padding-top:2px;white-space:nowrap;}
-.ai-dur{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:3px;}
-.ai-body h4{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--ink);margin-bottom:6px;}
-.ai-body p{font-size:13px;color:var(--ink2);line-height:1.6;}
-.ai-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
-.ai-tag{font-family:var(--mono);font-size:10px;color:var(--ink3);border:1px solid var(--rule);padding:2px 8px;letter-spacing:.02em;}
-.ws-arc{border-left:2px solid var(--rule);padding-left:20px;margin-top:16px;display:flex;flex-direction:column;gap:0;}
-.wsa{padding:14px 0;border-bottom:1px dotted var(--rule);}
-.wsa:last-child{border-bottom:none;}
-.wsa-t{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-bottom:4px;}
-.wsa-n{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px;}
-.wsa p{font-size:12px;color:var(--ink2);line-height:1.55;}
-.track-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
-.tr{font-family:var(--mono);font-size:10px;color:var(--ink2);border:1px solid var(--rule);padding:2px 8px;letter-spacing:.02em;}
+    .nav-links a {
+      font-size: 13px;
+      color: var(--ink2);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid transparent;
+      transition: color .12s, border-color .12s;
+    }
 
-/* FACILITATORS */
-.fac-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 40px;}
-.fac-photo{width:56px;height:56px;border-radius:50%;background:var(--rule);margin-bottom:14px;display:block;}
-.fac-aff{font-size:12px;color:var(--ink3);margin-bottom:4px;line-height:1.4;}
-.fac h3{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:10px;}
-.fac p{font-size:13px;color:var(--ink2);line-height:1.6;}
-.fac-links{display:flex;gap:14px;margin-top:10px;}
-.fac-links a{font-size:12px;color:var(--accent);text-decoration:none;}
-.fac-links a:hover{text-decoration:underline;}
+    .nav-links a:hover {
+      color: var(--ink);
+    }
 
-/* FOOTER */
-footer{padding:28px var(--pad);border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
-.ft-left{display:flex;flex-direction:column;gap:4px;}
-.ft-name{font-size:13px;font-weight:500;color:var(--ink);}
-.ft-copy{font-size:11px;color:var(--ink3);}
-.ft-share{display:flex;align-items:center;gap:8px;}
-.ft-share-label{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;}
-.ft-share-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--rule);color:var(--ink2);text-decoration:none;background:transparent;cursor:pointer;transition:border-color .12s,color .12s;}
-.ft-share-btn:hover{border-color:var(--ink2);color:var(--ink);}
-.ft-share-btn svg{width:14px;height:14px;}
+    .nav-links a.active {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
 
-/* TOAST */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--ink);color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:.03em;padding:10px 20px;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:999;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+    /* SHARE */
+    .nav-share {
+      position: relative;
+    }
 
-/* RESPONSIVE */
-@media(max-width:660px){
-  :root{--pad:20px;}
-  nav{padding:0 20px;}
-  .nav-links{gap:14px;}
-  .nav-links a{font-size:12px;}
-  .grid3,.fac-grid,.ev-impact{grid-template-columns:1fr;}
-  .ai{grid-template-columns:1fr;gap:4px;}
-  footer{flex-direction:column;align-items:flex-start;}
-  .share-dropdown{right:auto;left:0;}
-}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
-</style>
+    .nav-share-btn {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink2);
+      background: transparent;
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      padding: 6px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: border-color .12s, color .12s;
+      white-space: nowrap;
+      font-family: var(--sans);
+    }
+
+    .nav-share-btn:hover {
+      border-color: var(--ink2);
+      color: var(--ink);
+    }
+
+    .share-icon {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    .share-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--rule);
+      min-width: 200px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      display: none;
+      flex-direction: column;
+      z-index: 200;
+    }
+
+    .share-dropdown.open {
+      display: flex;
+    }
+
+    .share-dropdown-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      padding: 12px 16px 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .share-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      font-size: 13px;
+      color: var(--ink2);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      font-family: var(--sans);
+      transition: background .1s, color .1s;
+    }
+
+    .share-item:hover {
+      background: var(--warm);
+      color: var(--ink);
+    }
+
+    .share-item svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    .share-divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* CONTAINER */
+    .c {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    .lbl {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--ink3);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4.5vw, 46px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 10px;
+      max-width: 600px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--serif);
+      font-size: clamp(16px, 2.2vw, 20px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink2);
+      line-height: 1.4;
+      border-left: 2px solid var(--rule);
+      padding-left: 18px;
+      margin: 18px 0 28px;
+      max-width: 540px;
+    }
+
+    .hero-lead {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.65;
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+
+    .hero-pills {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(26, 92, 204, 0.3);
+      padding-bottom: 1px;
+      transition: border-color .12s;
+    }
+
+    .hero-pill:hover {
+      border-color: var(--accent);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hm {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 5px 12px;
+      border: 1px solid var(--rule);
+      color: var(--ink2);
+      margin-right: -1px;
+    }
+
+    .hm strong {
+      color: var(--ink);
+    }
+
+    .hero-share {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-share-label {
+      font-size: 13px;
+      color: var(--ink3);
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--ink2);
+      text-decoration: none;
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      padding: 6px 13px;
+      cursor: pointer;
+      background: transparent;
+      font-family: var(--sans);
+      transition: border-color .12s, color .12s;
+    }
+
+    .share-btn:hover {
+      border-color: var(--ink2);
+      color: var(--ink);
+    }
+
+    .share-btn svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    .sec {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sec-warm {
+      background: var(--warm);
+    }
+
+    .sec:last-of-type {
+      border-bottom: none;
+    }
+
+    .sec h2 {
+      font-family: var(--serif);
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 20px;
+      max-width: 540px;
+    }
+
+    .sec-intro {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 32px;
+    }
+
+    .gi-lbl {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 8px;
+    }
+
+    .gi h3 {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .gi p {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+
+    .defn {
+      border-left: 2px solid var(--rule);
+      padding-left: 20px;
+      margin: 32px 0;
+    }
+
+    .defn p {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .qlist {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .qi {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .qi:last-child {
+      border-bottom: none;
+    }
+
+    .qi-lbl {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 8px;
+    }
+
+    .qi p {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* EVIDENCE */
+    .evidence-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ev {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .ev:last-child {
+      border-bottom: none;
+    }
+
+    .ev-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 12px;
+    }
+
+    .ev-award {
+      display: inline-block;
+      margin-left: 10px;
+      font-family: var(--mono);
+      font-size: 10px;
+      background: #FFF8E1;
+      color: #7A5200;
+      padding: 1px 7px;
+      letter-spacing: .03em;
+    }
+
+    .ev h3 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .ev-source {
+      font-size: 12px;
+      color: var(--ink3);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .ev p.body {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    .ev-impact {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px 20px;
+      margin-top: 28px;
+    }
+
+    .ei {
+      border-top: 1px solid var(--rule);
+      padding-top: 14px;
+    }
+
+    .ei-lbl {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 6px;
+    }
+
+    .ei p {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.5;
+    }
+
+    /* AGENDA */
+    .agenda-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ai {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .ai:last-child {
+      border-bottom: none;
+    }
+
+    .ai-time {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink3);
+      padding-top: 2px;
+      white-space: nowrap;
+    }
+
+    .ai-dur {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink3);
+      margin-top: 3px;
+    }
+
+    .ai-body h4 {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .ai-body p {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+
+    .ai-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .ai-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink3);
+      border: 1px solid var(--rule);
+      padding: 2px 8px;
+      letter-spacing: .02em;
+    }
+
+    .ws-arc {
+      border-left: 2px solid var(--rule);
+      padding-left: 20px;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .wsa {
+      padding: 14px 0;
+      border-bottom: 1px dotted var(--rule);
+    }
+
+    .wsa:last-child {
+      border-bottom: none;
+    }
+
+    .wsa-t {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink3);
+      margin-bottom: 4px;
+    }
+
+    .wsa-n {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .wsa p {
+      font-size: 12px;
+      color: var(--ink2);
+      line-height: 1.55;
+    }
+
+    .track-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .tr {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink2);
+      border: 1px solid var(--rule);
+      padding: 2px 8px;
+      letter-spacing: .02em;
+    }
+
+    /* FACILITATORS */
+    .fac-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 40px;
+    }
+
+    .fac-photo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--rule);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .fac-aff {
+      font-size: 12px;
+      color: var(--ink3);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .fac h3 {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .fac p {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+
+    .fac-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .fac-links a {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .fac-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 28px var(--pad);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .ft-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ft-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .ft-copy {
+      font-size: 11px;
+      color: var(--ink3);
+    }
+
+    .ft-share {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ft-share-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink3);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .ft-share-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--rule);
+      color: var(--ink2);
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+      transition: border-color .12s, color .12s;
+    }
+
+    .ft-share-btn:hover {
+      border-color: var(--ink2);
+      color: var(--ink);
+    }
+
+    .ft-share-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--ink);
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .03em;
+      padding: 10px 20px;
+      opacity: 0;
+      transition: opacity .2s, transform .2s;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:660px) {
+      :root {
+        --pad: 20px;
+      }
+
+      nav {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .grid3,
+      .fac-grid,
+      .ev-impact {
+        grid-template-columns: 1fr;
+      }
+
+      .ai {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .share-dropdown {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="toast" id="toast">Link copied to clipboard</div>
+  <div class="toast" id="toast">Link copied to clipboard</div>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-wordmark" href="#hero">Architecting Explainability in CSE</a>
-  <ul class="nav-links">
-    <li><a href="#objective">Objective</a></li>
-    <li><a href="#concepts">Concepts</a></li>
-    <li><a href="#evidence">Empirical observations</a></li>
-    <li><a href="#agenda">Agenda</a></li>
-  </ul>
-  <div class="nav-share" id="navShare">
-    <button class="nav-share-btn" onclick="toggleDropdown()" aria-label="Share this page">
-      <svg class="share-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="3" r="1.5"/><circle cx="4" cy="8" r="1.5"/><circle cx="12" cy="13" r="1.5"/>
-        <line x1="5.5" y1="7" x2="10.5" y2="4"/><line x1="5.5" y1="9" x2="10.5" y2="12"/>
-      </svg>
-      Share
-    </button>
-    <div class="share-dropdown" id="shareDropdown">
-      <div class="share-dropdown-label">Share this session</div>
-      <a class="share-item" id="linkedinShare" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.554v-5.57c0-1.328-.024-3.037-1.85-3.037-1.851 0-2.134 1.445-2.134 2.939v5.668H9.358V9h3.413v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a class="share-item" id="twitterShare" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        X (Twitter)
-      </a>
-      <a class="share-item" id="blueskyShare" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.621-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
-        Bluesky
-      </a>
-      <hr class="share-divider">
-      <button class="share-item" onclick="copyLink()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-        Copy link
+  <!-- NAV -->
+  <nav>
+    <a class="nav-wordmark" href="#hero">Architecting Explainability in CSE | ICSA 2026</a>
+    <ul class="nav-links">
+      <li><a href="#objective">Objective</a></li>
+      <li><a href="#concepts">Concepts</a></li>
+      <li><a href="#evidence">Empirical observations</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+    </ul>
+    <div class="nav-share" id="navShare">
+      <button class="nav-share-btn" onclick="toggleDropdown()" aria-label="Share this page">
+        <svg class="share-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="3" r="1.5" />
+          <circle cx="4" cy="8" r="1.5" />
+          <circle cx="12" cy="13" r="1.5" />
+          <line x1="5.5" y1="7" x2="10.5" y2="4" />
+          <line x1="5.5" y1="9" x2="10.5" y2="12" />
+        </svg>
+        Share
       </button>
-      <a class="share-item" id="emailShare" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        Share by email
-      </a>
+      <div class="share-dropdown" id="shareDropdown">
+        <div class="share-dropdown-label">Share this session</div>
+        <a class="share-item" id="linkedinShare" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.45 20.45h-3.554v-5.57c0-1.328-.024-3.037-1.85-3.037-1.851 0-2.134 1.445-2.134 2.939v5.668H9.358V9h3.413v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+          LinkedIn
+        </a>
+        <a class="share-item" id="twitterShare" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          X (Twitter)
+        </a>
+        <a class="share-item" id="blueskyShare" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.621-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z" />
+          </svg>
+          Bluesky
+        </a>
+        <hr class="share-divider">
+        <button class="share-item" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+          </svg>
+          Copy link
+        </button>
+        <a class="share-item" id="emailShare" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="M2 7l10 7 10-7" />
+          </svg>
+          Share by email
+        </a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- HERO -->
-<div class="hero" id="hero">
-  <div class="c">
-    <span class="lbl">Working session · ICSA 2026 · Vrije Universiteit Amsterdam</span>
-    <h1>Architecting Explainability<br>in Continuous Software Engineering</h1>
-    <p class="hero-subtitle">Governing Its Shadow Impacts</p>
-    <p class="hero-lead">A 90-minute working session reframing explainable AI from a model-level feature to a resource-consuming architectural quality attribute — and building the governance vocabulary to manage it.</p>
-    <div class="hero-pills">
-      <a class="hero-pill" href="#objective">Objective</a>
-      <a class="hero-pill" href="#concepts">Concepts</a>
-      <a class="hero-pill" href="#evidence">Empirical observations</a>
-      <a class="hero-pill" href="#agenda">Agenda</a>
-    </div>
-    <div class="hero-meta">
-      <div class="hm"><strong>ICSA 2026</strong></div>
-      <div class="hm">Working session</div>
-      <div class="hm">90 minutes</div>
-      <div class="hm">3 – 10 participants</div>
-    </div>
-    <div class="hero-share">
-      <span class="hero-share-label">Share</span>
-      <a class="share-btn" id="heroLinkedin" href="#" target="_blank" rel="noopener" title="Share on LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.554v-5.57c0-1.328-.024-3.037-1.85-3.037-1.851 0-2.134 1.445-2.134 2.939v5.668H9.358V9h3.413v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a class="share-btn" id="heroTwitter" href="#" target="_blank" rel="noopener" title="Share on X">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        X
-      </a>
-      <a class="share-btn" id="heroBluesky" href="#" target="_blank" rel="noopener" title="Share on Bluesky">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.621-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
-        Bluesky
-      </a>
-      <button class="share-btn" onclick="copyLink()" title="Copy link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-        Copy link
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- OBJECTIVE -->
-<section class="sec" id="objective">
-  <div class="c">
-    <span class="lbl">Objective</span>
-    <h2>Three questions the software architecture community has not yet answered.</h2>
-    <p class="sec-intro">Current practice treats explainability as a cost-neutral model property. This session argues it is a governed architectural concern — and asks the community to define what governing it would require.</p>
-    <div class="qlist">
-      <div class="qi">
-        <div class="qi-lbl">Question 1 · Quality attribute status</div>
-        <p>Should explainability be formalised as a first-class architectural quality attribute, alongside performance, security, and maintainability?</p>
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <div class="c">
+      <span class="lbl">Working session · ICSA 2026 · Vrije Universiteit Amsterdam</span>
+      <h1>Architecting Explainability<br>in Continuous Software Engineering</h1>
+      <p class="hero-subtitle">Governing Its Shadow Impacts</p>
+      <p class="hero-lead">A 90-minute working session reframing explainable AI from a model-level feature to a
+        resource-consuming architectural quality attribute — and building the governance vocabulary to manage it.</p>
+      <div class="hero-pills">
+        <a class="hero-pill" href="#objective">Objective</a>
+        <a class="hero-pill" href="#concepts">Concepts</a>
+        <a class="hero-pill" href="#evidence">Empirical observations</a>
+        <a class="hero-pill" href="#agenda">Agenda</a>
       </div>
-      <div class="qi">
-        <div class="qi-lbl">Question 2 · Governance in continuous software engineering</div>
-        <p>How should the shadow impacts of explainability be governed within the fast-paced cycles of CI/CD pipelines and automated infrastructure?</p>
+      <div class="hero-meta">
+        <!-- <div class="hm"><strong>ICSA 2026</strong></div> -->
+        <div class="hm"><strong>Thursday, 25 June 2026 | 10:30 AM–12:00 PM CEST</strong></div>
+        <!-- <div class="hm">Working session</div> -->
+        <!-- <div class="hm">90 minutes</div> -->
+        <div class="hm">3 – 10 participants</div>
       </div>
-      <div class="qi">
-        <div class="qi-lbl">Question 3 · Architectural tactics</div>
-        <p>Which specific architectural tactics can effectively mitigate structural redundancy in explanation artifacts while preserving systemic accountability?</p>
-      </div>
-    </div>
-    <div style="margin-top:48px;">
-      <span class="lbl">Session deliverable</span>
-      <div class="grid3">
-        <div class="gi"><span class="gi-lbl">Shared vocabulary</span><h3>Name the problem before solving it.</h3><p>An agreed taxonomy for transparency debt, shadow impacts, and explanation lifecycle — established during the invited talks and refined in the working groups.</p></div>
-        <div class="gi"><span class="gi-lbl">Governance canvas</span><h3>Map patterns to impacts.</h3><p>A completed 3×3 canvas mapping architectural pattern adaptations and lifecycle metrics to the shadow impact dimensions — published within seven days.</p></div>
-        <div class="gi"><span class="gi-lbl">Research agenda</span><h3>Assign the open questions.</h3><p>Prioritised research questions across the three discussion tracks, with volunteer leads and evidence requirements recorded before the session ends.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONCEPTS -->
-<section class="sec" id="concepts">
-  <div class="c">
-    <span class="lbl">Concepts</span>
-    <h2>A vocabulary for explainability as an architectural concern.</h2>
-    <p class="sec-intro">These concepts form the shared language for the session. Each is grounded in the empirical findings described in the next section.</p>
-    <div class="defn">
-      <p>The <strong>operational shadow of explainability</strong> is the aggregate of resource costs — storage, compute, energy, maintenance — generated by explanation artifacts across the lifecycle of an AI-intensive system, independent of the explanatory value those artifacts provide.</p>
-    </div>
-    <div class="grid3" style="margin-top:48px;">
-      <div class="gi"><span class="gi-lbl">XAI as quality attribute</span><h3>More than a model output.</h3><p>Explainability is a resource-consuming architectural property that introduces systemic tensions with sustainability, privacy, and maintainability — not a cost-neutral feature.</p></div>
-      <div class="gi"><span class="gi-lbl">Explanation artifact</span><h3>The residue of transparency.</h3><p>Attribution maps, feature embeddings, model checkpoints, and saliency logs produced by XAI mechanisms. They accumulate passively and are rarely governed.</p></div>
-      <div class="gi"><span class="gi-lbl">Transparency debt</span><h3>Accumulated liability.</h3><p>The growing architectural burden created when explanation artifacts are retained beyond their marginal explanatory value, accruing storage, energy, and maintenance costs.</p></div>
-      <div class="gi"><span class="gi-lbl">Redundancy cost function</span><h3>Marginal value against systemic burden.</h3><p>A model linking the marginal explanatory value of an artifact to its operational cost — the basis for promotion, demotion, and pruning lifecycle decisions.</p></div>
-      <div class="gi"><span class="gi-lbl">Out-of-model phenomenon</span><h3>Impacts that models cannot see.</h3><p>Shadow impacts manifest in storage tiers, AIOps toolchains, and governance layers — not in model accuracy metrics. Current observability practices do not surface them.</p></div>
-      <div class="gi"><span class="gi-lbl">Explanation fragmentation</span><h3>Coherence lost across services.</h3><p>In microservice architectures, the rationale for a decision is distributed across independently-evolving components, making a coherent audit chain architecturally unviable.</p></div>
-    </div>
-    <div style="margin-top:56px;">
-      <span class="lbl">Lifecycle governance model</span>
-      <div class="grid3" style="margin-top:24px;">
-        <div class="gi"><span class="gi-lbl">Promote</span><h3>Preserve high-value explanations.</h3><p>Artifacts whose marginal explanatory value exceeds their operational cost are promoted to long-term storage with full provenance metadata.</p></div>
-        <div class="gi"><span class="gi-lbl">Demote</span><h3>Move stale metadata to cold tiers.</h3><p>Artifacts that retain some value but are infrequently accessed are demoted to cheaper storage, reducing retrieval and compute overhead.</p></div>
-        <div class="gi"><span class="gi-lbl">Prune</span><h3>Remove redundant artifacts entirely.</h3><p>Artifacts whose marginal value has fallen to zero — successive near-identical checkpoints, stale attribution maps — are pruned to reduce energy and storage footprint.</p></div>
-      </div>
-    </div>
-    <div style="margin-top:56px;">
-      <span class="lbl">Three discussion tracks</span>
-      <div class="grid3" style="margin-top:24px;">
-        <div class="gi"><span class="gi-lbl">Track I</span><h3>Transparency debt.</h3><p>Characterising and measuring the accumulation of explanation artifacts — redundancy cost functions, observability signals, and cross-dimension shadow impact interactions.</p></div>
-        <div class="gi"><span class="gi-lbl">Track II</span><h3>Architectural lifecycle.</h3><p>Patterns and tactics for governing explanation artifacts — explanation contracts, lifecycle policies, surrogate fidelity trade-offs in edge–cloud deployments.</p></div>
-        <div class="gi"><span class="gi-lbl">Track III</span><h3>Governing AI-intensive systems.</h3><p>Formalising XAI governance — CI/CD regression tests, ISO/IEC 25010 extension, ATAM adaptation, and the interaction with EU AI Act retention requirements.</p></div>
+      <div class="hero-share">
+        <span class="hero-share-label">Share</span>
+        <a class="share-btn" id="heroLinkedin" href="#" target="_blank" rel="noopener" title="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.45 20.45h-3.554v-5.57c0-1.328-.024-3.037-1.85-3.037-1.851 0-2.134 1.445-2.134 2.939v5.668H9.358V9h3.413v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+          LinkedIn
+        </a>
+        <a class="share-btn" id="heroTwitter" href="#" target="_blank" rel="noopener" title="Share on X">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          X
+        </a>
+        <a class="share-btn" id="heroBluesky" href="#" target="_blank" rel="noopener" title="Share on Bluesky">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.621-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z" />
+          </svg>
+          Bluesky
+        </a>
+        <button class="share-btn" onclick="copyLink()" title="Copy link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+          </svg>
+          Copy link
+        </button>
       </div>
     </div>
   </div>
-</section>
 
-<!-- EMPIRICAL OBSERVATIONS -->
-<section class="sec sec-warm" id="evidence">
-  <div class="c">
-    <span class="lbl">Empirical observations</span>
-    <h2>Two findings that motivate this session.</h2>
-    <p class="sec-intro">Both findings are external to model performance. Neither appears in existing architecture quality models or CI/CD governance frameworks.</p>
-    <div class="evidence-list">
-      <div class="ev">
-        <span class="ev-badge">Discovery 1 · ICSE NIER 2026<span class="ev-award">Accepted</span></span>
-        <h3>Redundancy as a systemic byproduct of explainability.</h3>
-        <p class="ev-source">Longitudinal study · large-scale medical imaging pipelines · millions of samples · iterative augmentation experiments</p>
-        <p class="body">Explanation artifacts — high-dimensional attribution maps, feature embeddings, and model checkpoints — accumulate passively across every iteration of the evolution cycle. These artifacts exhibit high informational redundancy without explicit architectural lifecycle evaluation. Storage, retrieval, and maintenance costs grow non-linearly relative to the system's utility. The marginal explanatory value of each successive artifact approaches zero while its operational cost remains constant.</p>
-        <div class="ev-impact">
-          <div class="ei"><div class="ei-lbl">Pattern observed</div><p>Architectural decay through passive artifact accumulation across every CI/CD iteration.</p></div>
-          <div class="ei"><div class="ei-lbl">Cost structure</div><p>Non-linear growth in storage, retrieval, and maintenance costs relative to utility gain.</p></div>
-          <div class="ei"><div class="ei-lbl">Governance gap</div><p>No current lifecycle policy triggers demotion or pruning of stale explanation artifacts.</p></div>
+  <!-- OBJECTIVE -->
+  <section class="sec" id="objective">
+    <div class="c">
+      <span class="lbl">Objective</span>
+      <h2>Three questions the software architecture community has not yet answered.</h2>
+      <p class="sec-intro">Current practice treats explainability as a cost-neutral model property. This session argues
+        it is a governed architectural concern — and asks the community to define what governing it would require.</p>
+      <div class="qlist">
+        <div class="qi">
+          <div class="qi-lbl">Question 1 · Quality attribute status</div>
+          <p>Should explainability be formalised as a first-class architectural quality attribute, alongside
+            performance, security, and maintainability?</p>
+        </div>
+        <div class="qi">
+          <div class="qi-lbl">Question 2 · Governance in continuous software engineering</div>
+          <p>How should the shadow impacts of explainability be governed within the fast-paced cycles of CI/CD pipelines
+            and automated infrastructure?</p>
+        </div>
+        <div class="qi">
+          <div class="qi-lbl">Question 3 · Architectural tactics</div>
+          <p>Which specific architectural tactics can effectively mitigate structural redundancy in explanation
+            artifacts while preserving systemic accountability?</p>
         </div>
       </div>
-      <div class="ev">
-        <span class="ev-badge">Discovery 2 · UK–Canada collaboration</span>
-        <h3>Shadow impacts and the out-of-model phenomenon.</h3>
-        <p class="ev-source">Joint research programme · Queen's University Belfast &amp; Concordia University · generalised from Discovery 1</p>
-        <p class="body">Embedding explanation mechanisms triggers a cascade of hidden impacts across multiple architectural dimensions simultaneously. These impacts are external to the model — they manifest in storage tiers, AIOps iterations, and governance layers, not in accuracy metrics. In a continuous software engineering context, they accumulate invisibly because current practice treats explanations as passive outputs rather than governed architectural assets.</p>
-        <div class="ev-impact">
-          <div class="ei"><div class="ei-lbl">Technical</div><p>Computational overhead, data pipeline complexity, provenance tracking cost.</p></div>
-          <div class="ei"><div class="ei-lbl">Sustainability</div><p>Increased energy footprint from artifact generation, retention, and retrieval at every iteration.</p></div>
-          <div class="ei"><div class="ei-lbl">Privacy</div><p>Attribution artifacts retain training data signals; persistent retention elevates leakage risk.</p></div>
-          <div class="ei"><div class="ei-lbl">Cognitive</div><p>Explanation overload for stakeholders; degraded decision quality from artifact saturation.</p></div>
-          <div class="ei"><div class="ei-lbl">Organisational</div><p>Maintenance debt accumulating invisibly across teams and release cycles.</p></div>
-          <div class="ei"><div class="ei-lbl">Regulatory</div><p>Compliance drift as explanation chains fragment across independently-evolving agents.</p></div>
-        </div>
-      </div>
-      <div class="ev">
-        <span class="ev-badge">Architectural gap</span>
-        <h3>What continuous software engineering practice is missing.</h3>
-        <p class="ev-source">Cross-cutting finding · service-oriented and microservice architectures · CI/CD-deployed AI-intensive systems</p>
-        <p class="body">In service-oriented and microservice architectures, AI evolution leads to explanation fragmentation — the rationale for a decision is distributed across multiple autonomous agents that evolve independently. No current continuous architecture practice includes explanation regression tests in CI/CD, lifecycle policies for explanation artifacts, or cross-boundary explanation contracts between services.</p>
-        <div class="ev-impact">
-          <div class="ei"><div class="ei-lbl">Missing in CI/CD</div><p>Explanation regression tests — no fidelity threshold gate exists in any standard pipeline.</p></div>
-          <div class="ei"><div class="ei-lbl">Missing in microservices</div><p>Cross-boundary explanation contracts — no schema specifies what one service owes another in XAI provenance.</p></div>
-          <div class="ei"><div class="ei-lbl">Missing in quality models</div><p>Explainability as a lifecycle-governed attribute — ISO/IEC 25010 and ATAM offer no mechanism for transparency debt.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AGENDA -->
-<section class="sec" id="agenda">
-  <div class="c">
-    <span class="lbl">Agenda</span>
-    <h2>90 minutes. Two invited talks. One working session.</h2>
-    <p class="sec-intro">The invited talks establish shared vocabulary and frame the empirical evidence. The 45-minute working session converts that context into a governance canvas and a prioritised research agenda.</p>
-    <div class="agenda-list">
-      <div class="ai">
-        <div><div class="ai-time">0:00 – 0:05</div><div class="ai-dur">5 min</div></div>
-        <div class="ai-body"><h4>Opening remarks</h4><p>Facilitators frame the session in one sentence: explainability accumulates costs that architecture does not currently govern. Session structure and track overview. Participants self-assign to one of three discussion tracks.</p><div class="ai-tags"><span class="ai-tag">Problem statement</span><span class="ai-tag">Track self-assignment</span></div></div>
-      </div>
-      <div class="ai">
-        <div><div class="ai-time">0:05 – 0:20</div><div class="ai-dur">15 min</div></div>
-        <div class="ai-body"><h4>Invited talk 1 — The operational shadow of explainability</h4><p>The empirical evidence: how explanation artifacts accumulate non-linearly in large-scale AI pipelines, what the redundancy cost function reveals, and why the six shadow impact dimensions are all external to the model. Questions held for the working session.</p><div class="ai-tags"><span class="ai-tag">Invited talk · no Q&amp;A</span><span class="ai-tag">Grounds Tracks I and II</span></div></div>
-      </div>
-      <div class="ai">
-        <div><div class="ai-time">0:20 – 0:35</div><div class="ai-dur">15 min</div></div>
-        <div class="ai-body"><h4>Invited talk 2 — Governing explanation artifacts: lifecycle patterns and quality attribute formalization</h4><p>The architectural response: what lifecycle policies look like in practice, how existing CSE patterns create or suppress transparency debt, and what it would take to formalise XAI as a first-class quality attribute.</p><div class="ai-tags"><span class="ai-tag">Invited talk · no Q&amp;A</span><span class="ai-tag">Grounds Track III</span></div></div>
-      </div>
-      <div class="ai">
-        <div><div class="ai-time">0:35 – 1:20</div><div class="ai-dur">45 min</div></div>
-        <div class="ai-body">
-          <h4>Working session — Research question refinement and governance canvas</h4>
-          <p>Three parallel tracks refine the pre-seeded research questions, then converge in plenary synthesis onto the shared Governance Canvas.</p>
-          <div class="ws-arc">
-            <div class="wsa"><div class="wsa-t">0:35 – 0:40 · 5 min</div><div class="wsa-n">Setup</div><p>Working sheets distributed. Each group nominates a scribe and a skeptic — the skeptic is required to challenge the first consensus reached.</p></div>
-            <div class="wsa"><div class="wsa-t">0:40 – 1:05 · 25 min</div><div class="wsa-n">Track work</div><p>Groups evaluate, refine, or reject the four pre-seeded research questions. May add one new question. Output: ranked list of 2–3 RQs with evidence requirements.</p><div class="track-row"><span class="tr">Track I · Debt measurement</span><span class="tr">Track II · Lifecycle patterns</span><span class="tr">Track III · Governance &amp; formalization</span></div></div>
-            <div class="wsa"><div class="wsa-t">1:05 – 1:20 · 15 min</div><div class="wsa-n">Plenary synthesis</div><p>Each track reports in 4 minutes. Facilitator maps outputs onto the Governance Canvas. Final 3 minutes: dot vote on top cross-cutting tension and formalization position.</p></div>
+      <div style="margin-top:48px;">
+        <span class="lbl">Session deliverable</span>
+        <div class="grid3">
+          <div class="gi"><span class="gi-lbl">Shared vocabulary</span>
+            <h3>Name the problem before solving it.</h3>
+            <p>An agreed taxonomy for transparency debt, shadow impacts, and explanation lifecycle — established during
+              the invited talks and refined in the working groups.</p>
           </div>
-          <div class="ai-tags" style="margin-top:14px;"><span class="ai-tag">3 parallel tracks</span><span class="ai-tag">Scribe + skeptic per group</span><span class="ai-tag">Shadow Cost Worksheet</span><span class="ai-tag">Pattern Decision Tree</span><span class="ai-tag">Governance Canvas</span></div>
-        </div>
-      </div>
-      <div class="ai">
-        <div><div class="ai-time">1:20 – 1:30</div><div class="ai-dur">10 min</div></div>
-        <div class="ai-body"><h4>Wrap-up — RQ ownership, formalization vote, canvas handoff</h4><p>Each prioritised research question receives a volunteer lead. The community records its formalization position. Governance Canvas PDF shared via QR before participants leave.</p><div class="ai-tags"><span class="ai-tag">RQ leads assigned</span><span class="ai-tag">Formalization vote recorded</span><span class="ai-tag">Canvas PDF on exit</span></div></div>
-      </div>
-    </div>
-    <div style="margin-top:64px;">
-      <span class="lbl">Facilitators</span>
-      <div class="fac-grid" style="margin-top:28px;">
-        <div class="fac">
-          <div class="fac-photo"></div>
-          <p class="fac-aff">Full Professor · Gina Cody School of Engineering and Computer Science · Concordia University, Montréal</p>
-          <h3>Prof. Yan Liu</h3>
-          <p>Specialises in architecture-level quality assurance for AI-intensive systems. ICSE NIER 2026 work formalises the redundancy cost function and the operational shadow of explainability.</p>
-          <div class="fac-links"><a href="mailto:yan.liu@concordia.ca">yan.liu@concordia.ca</a></div>
-        </div>
-        <div class="fac">
-          <div class="fac-photo"></div>
-          <p class="fac-aff">Lecturer in Software Engineering · Queen's University Belfast</p>
-          <h3>Dr. Zheng Li</h3>
-          <p>Leads research in cloud-native software engineering and edge intelligence, focusing on architecture design and quality assurance for AI-enabled systems in distributed environments.</p>
-          <div class="fac-links"><a href="https://pure.qub.ac.uk/en/persons/zheng-li/">pure.qub.ac.uk profile</a><a href="mailto:zheng.li@qub.ac.uk">zheng.li@qub.ac.uk</a></div>
+          <div class="gi"><span class="gi-lbl">Governance canvas</span>
+            <h3>Map patterns to impacts.</h3>
+            <p>A completed 3×3 canvas mapping architectural pattern adaptations and lifecycle metrics to the shadow
+              impact dimensions — published within seven days.</p>
+          </div>
+          <div class="gi"><span class="gi-lbl">Research agenda</span>
+            <h3>Assign the open questions.</h3>
+            <p>Prioritised research questions across the three discussion tracks, with volunteer leads and evidence
+              requirements recorded before the session ends.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="ft-left">
-    <span class="ft-name">Architecting Explainability in CSE · ICSA 2026</span>
-    <span class="ft-copy">© 2026 Concordia University &amp; Queen's University Belfast · Working session materials published after the session.</span>
-  </div>
-  <div class="ft-share">
-    <span class="ft-share-label">Share</span>
-    <a class="ft-share-btn" id="footerLinkedin" href="#" target="_blank" rel="noopener" title="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.554v-5.57c0-1.328-.024-3.037-1.85-3.037-1.851 0-2.134 1.445-2.134 2.939v5.668H9.358V9h3.413v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    </a>
-    <a class="ft-share-btn" id="footerTwitter" href="#" target="_blank" rel="noopener" title="X">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-    </a>
-    <a class="ft-share-btn" id="footerBluesky" href="#" target="_blank" rel="noopener" title="Bluesky">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.621-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
-    </a>
-    <button class="ft-share-btn" onclick="copyLink()" title="Copy link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-    </button>
-  </div>
-</footer>
+  <!-- CONCEPTS -->
+  <section class="sec" id="concepts">
+    <div class="c">
+      <span class="lbl">Concepts</span>
+      <h2>A vocabulary for explainability as an architectural concern.</h2>
+      <p class="sec-intro">These concepts form the shared language for the session. Each is grounded in the empirical
+        findings described in the next section.</p>
+      <div class="defn">
+        <p>The <strong>operational shadow of explainability</strong> is the aggregate of resource costs — storage,
+          compute, energy, maintenance — generated by explanation artifacts across the lifecycle of an AI-intensive
+          system, independent of the explanatory value those artifacts provide.</p>
+      </div>
+      <div class="grid3" style="margin-top:48px;">
+        <div class="gi"><span class="gi-lbl">XAI as quality attribute</span>
+          <h3>More than a model output.</h3>
+          <p>Explainability is a resource-consuming architectural property that introduces systemic tensions with
+            sustainability, privacy, and maintainability — not a cost-neutral feature.</p>
+        </div>
+        <div class="gi"><span class="gi-lbl">Explanation artifact</span>
+          <h3>The residue of transparency.</h3>
+          <p>Attribution maps, feature embeddings, model checkpoints, and saliency logs produced by XAI mechanisms. They
+            accumulate passively and are rarely governed.</p>
+        </div>
+        <div class="gi"><span class="gi-lbl">Transparency debt</span>
+          <h3>Accumulated liability.</h3>
+          <p>The growing architectural burden created when explanation artifacts are retained beyond their marginal
+            explanatory value, accruing storage, energy, and maintenance costs.</p>
+        </div>
+        <div class="gi"><span class="gi-lbl">Redundancy cost function</span>
+          <h3>Marginal value against systemic burden.</h3>
+          <p>A model linking the marginal explanatory value of an artifact to its operational cost — the basis for
+            promotion, demotion, and pruning lifecycle decisions.</p>
+        </div>
+        <div class="gi"><span class="gi-lbl">Out-of-model phenomenon</span>
+          <h3>Impacts that models cannot see.</h3>
+          <p>Shadow impacts manifest in storage tiers, AIOps toolchains, and governance layers — not in model accuracy
+            metrics. Current observability practices do not surface them.</p>
+        </div>
+        <div class="gi"><span class="gi-lbl">Explanation fragmentation</span>
+          <h3>Coherence lost across services.</h3>
+          <p>In microservice architectures, the rationale for a decision is distributed across independently-evolving
+            components, making a coherent audit chain architecturally unviable.</p>
+        </div>
+      </div>
+      <div style="margin-top:56px;">
+        <span class="lbl">Lifecycle governance model</span>
+        <div class="grid3" style="margin-top:24px;">
+          <div class="gi"><span class="gi-lbl">Promote</span>
+            <h3>Preserve high-value explanations.</h3>
+            <p>Artifacts whose marginal explanatory value exceeds their operational cost are promoted to long-term
+              storage with full provenance metadata.</p>
+          </div>
+          <div class="gi"><span class="gi-lbl">Demote</span>
+            <h3>Move stale metadata to cold tiers.</h3>
+            <p>Artifacts that retain some value but are infrequently accessed are demoted to cheaper storage, reducing
+              retrieval and compute overhead.</p>
+          </div>
+          <div class="gi"><span class="gi-lbl">Prune</span>
+            <h3>Remove redundant artifacts entirely.</h3>
+            <p>Artifacts whose marginal value has fallen to zero — successive near-identical checkpoints, stale
+              attribution maps — are pruned to reduce energy and storage footprint.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:56px;">
+        <span class="lbl">Three discussion tracks</span>
+        <div class="grid3" style="margin-top:24px;">
+          <div class="gi"><span class="gi-lbl">Track I</span>
+            <h3>Transparency debt.</h3>
+            <p>Characterising and measuring the accumulation of explanation artifacts — redundancy cost functions,
+              observability signals, and cross-dimension shadow impact interactions.</p>
+          </div>
+          <div class="gi"><span class="gi-lbl">Track II</span>
+            <h3>Architectural lifecycle.</h3>
+            <p>Patterns and tactics for governing explanation artifacts — explanation contracts, lifecycle policies,
+              surrogate fidelity trade-offs in edge–cloud deployments.</p>
+          </div>
+          <div class="gi"><span class="gi-lbl">Track III</span>
+            <h3>Governing AI-intensive systems.</h3>
+            <p>Formalising XAI governance — CI/CD regression tests, ISO/IEC 25010 extension, ATAM adaptation, and the
+              interaction with EU AI Act retention requirements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-const PAGE_URL   = encodeURIComponent(window.location.href);
-const TWEET_TEXT = encodeURIComponent('Working session at #ICSA2026: Architecting Explainability in Continuous Software Engineering — Governing Its Shadow Impacts. Reframing XAI as an architectural quality attribute with real governance costs.');
-const BSKY_TEXT  = encodeURIComponent('Working session at ICSA 2026: Architecting Explainability in Continuous Software Engineering — Governing Its Shadow Impacts. Reframing XAI as a governed architectural quality attribute.');
-const EMAIL_SUB  = encodeURIComponent('ICSA 2026 Working Session: Architecting Explainability in CSE');
-const EMAIL_BODY = encodeURIComponent('I thought you might find this working session interesting:\n\nArchitecting Explainability in Continuous Software Engineering: Governing Its Shadow Impacts\nICSA 2026 · Vrije Universiteit Amsterdam · 90 minutes\n\n' + window.location.href);
+  <!-- EMPIRICAL OBSERVATIONS -->
+  <section class="sec sec-warm" id="evidence">
+    <div class="c">
+      <span class="lbl">Empirical observations</span>
+      <h2>Two findings that motivate this session.</h2>
+      <p class="sec-intro">Both findings are external to model performance. Neither appears in existing architecture
+        quality models or CI/CD governance frameworks.</p>
+      <div class="evidence-list">
+        <div class="ev">
+          <span class="ev-badge">Discovery 1 · ICSE NIER 2026<span class="ev-award">Accepted</span></span>
+          <h3>Redundancy as a systemic byproduct of explainability.</h3>
+          <p class="ev-source">Longitudinal study · large-scale medical imaging pipelines · millions of samples ·
+            iterative augmentation experiments</p>
+          <p class="body">Explanation artifacts — high-dimensional attribution maps, feature embeddings, and model
+            checkpoints — accumulate passively across every iteration of the evolution cycle. These artifacts exhibit
+            high informational redundancy without explicit architectural lifecycle evaluation. Storage, retrieval, and
+            maintenance costs grow non-linearly relative to the system's utility. The marginal explanatory value of each
+            successive artifact approaches zero while its operational cost remains constant.</p>
+          <div class="ev-impact">
+            <div class="ei">
+              <div class="ei-lbl">Pattern observed</div>
+              <p>Architectural decay through passive artifact accumulation across every CI/CD iteration.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Cost structure</div>
+              <p>Non-linear growth in storage, retrieval, and maintenance costs relative to utility gain.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Governance gap</div>
+              <p>No current lifecycle policy triggers demotion or pruning of stale explanation artifacts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ev">
+          <span class="ev-badge">Discovery 2 · UK–Canada collaboration</span>
+          <h3>Shadow impacts and the out-of-model phenomenon.</h3>
+          <p class="ev-source">Joint research programme · Queen's University Belfast &amp; Concordia University ·
+            generalised from Discovery 1</p>
+          <p class="body">Embedding explanation mechanisms triggers a cascade of hidden impacts across multiple
+            architectural dimensions simultaneously. These impacts are external to the model — they manifest in storage
+            tiers, AIOps iterations, and governance layers, not in accuracy metrics. In a continuous software
+            engineering context, they accumulate invisibly because current practice treats explanations as passive
+            outputs rather than governed architectural assets.</p>
+          <div class="ev-impact">
+            <div class="ei">
+              <div class="ei-lbl">Technical</div>
+              <p>Computational overhead, data pipeline complexity, provenance tracking cost.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Sustainability</div>
+              <p>Increased energy footprint from artifact generation, retention, and retrieval at every iteration.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Privacy</div>
+              <p>Attribution artifacts retain training data signals; persistent retention elevates leakage risk.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Cognitive</div>
+              <p>Explanation overload for stakeholders; degraded decision quality from artifact saturation.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Organisational</div>
+              <p>Maintenance debt accumulating invisibly across teams and release cycles.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Regulatory</div>
+              <p>Compliance drift as explanation chains fragment across independently-evolving agents.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ev">
+          <span class="ev-badge">Architectural gap</span>
+          <h3>What continuous software engineering practice is missing.</h3>
+          <p class="ev-source">Cross-cutting finding · service-oriented and microservice architectures · CI/CD-deployed
+            AI-intensive systems</p>
+          <p class="body">In service-oriented and microservice architectures, AI evolution leads to explanation
+            fragmentation — the rationale for a decision is distributed across multiple autonomous agents that evolve
+            independently. No current continuous architecture practice includes explanation regression tests in CI/CD,
+            lifecycle policies for explanation artifacts, or cross-boundary explanation contracts between services.</p>
+          <div class="ev-impact">
+            <div class="ei">
+              <div class="ei-lbl">Missing in CI/CD</div>
+              <p>Explanation regression tests — no fidelity threshold gate exists in any standard pipeline.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Missing in microservices</div>
+              <p>Cross-boundary explanation contracts — no schema specifies what one service owes another in XAI
+                provenance.</p>
+            </div>
+            <div class="ei">
+              <div class="ei-lbl">Missing in quality models</div>
+              <p>Explainability as a lifecycle-governed attribute — ISO/IEC 25010 and ATAM offer no mechanism for
+                transparency debt.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-function applyURLs() {
-  const li = 'https://www.linkedin.com/sharing/share-offsite/?url=' + PAGE_URL;
-  const tw = 'https://twitter.com/intent/tweet?text=' + TWEET_TEXT + '&url=' + PAGE_URL;
-  const bs = 'https://bsky.app/intent/compose?text=' + BSKY_TEXT + '%20' + PAGE_URL;
-  const em = 'mailto:?subject=' + EMAIL_SUB + '&body=' + EMAIL_BODY;
-  document.getElementById('linkedinShare').href  = li;
-  document.getElementById('twitterShare').href   = tw;
-  document.getElementById('blueskyShare').href   = bs;
-  document.getElementById('emailShare').href     = em;
-  document.getElementById('heroLinkedin').href   = li;
-  document.getElementById('heroTwitter').href    = tw;
-  document.getElementById('heroBluesky').href    = bs;
-  document.getElementById('footerLinkedin').href = li;
-  document.getElementById('footerTwitter').href  = tw;
-  document.getElementById('footerBluesky').href  = bs;
-}
-applyURLs();
+  <!-- AGENDA -->
+  <section class="sec" id="agenda">
+    <div class="c">
+      <span class="lbl">Agenda</span>
+      <h2>90 minutes. Two invited talks. One working session.</h2>
+      <p class="sec-intro">The invited talks establish shared vocabulary and frame the empirical evidence. The 45-minute
+        working session converts that context into a governance canvas and a prioritised research agenda.</p>
+      <div class="agenda-list">
+        <div class="ai">
+          <div>
+            <div class="ai-time">10:30 – 10:35</div>
+            <div class="ai-dur">5 min</div>
+          </div>
+          <div class="ai-body">
+            <h4>Opening remarks</h4>
+            <p>Facilitators frame the session in one sentence: explainability accumulates costs that architecture does
+              not currently govern. Session structure and track overview. Participants self-assign to one of three
+              discussion tracks.</p>
+            <div class="ai-tags"><span class="ai-tag">Problem statement</span><span class="ai-tag">Track
+                self-assignment</span></div>
+          </div>
+        </div>
+        <div class="ai">
+          <div>
+            <div class="ai-time">10:35 – 11:05</div>
+            <div class="ai-dur">30 min</div>
+          </div>
+          <div class="ai-body">
+            <h4>Working session — Research question refinement and governance canvas</h4>
+            <p>Three parallel tracks refine the pre-seeded research questions, then converge in plenary synthesis onto
+              the shared Governance Canvas.</p>
+            <div class="ws-arc">
+              <div class="wsa">
+                <!-- <div class="wsa-t">11:05 – 11:10 · 5 min</div> -->
+                <div class="wsa-n">Setup</div>
+                <p>Working sheets distributed. Each group nominates a scribe and a skeptic — the skeptic is required to
+                  challenge the first consensus reached.</p>
+              </div>
+              <div class="wsa">
+                <!-- <div class="wsa-t">11:10 – 11:35 · 25 min</div> -->
+                <div class="wsa-n">Track work</div>
+                <p>Groups evaluate, refine, or reject the four pre-seeded research questions. May add one new question.
+                  Output: ranked list of 2–3 RQs with evidence requirements.</p>
+                <div class="track-row"><span class="tr">Track I · Debt measurement</span><span class="tr">Track II ·
+                    Lifecycle patterns</span><span class="tr">Track III · Governance &amp; formalization</span></div>
+              </div>
+              <div class="wsa">
+                <!-- <div class="wsa-t">11:35 – 11:50 · 15 min</div> -->
+                <div class="wsa-n">Plenary synthesis</div>
+                <p>Each track reports in 4 minutes. Facilitator maps outputs onto the Governance Canvas. Final 3
+                  minutes: dot vote on top cross-cutting tension and formalization position.</p>
+              </div>
+            </div>
+            <div class="ai-tags" style="margin-top:14px;"><span class="ai-tag">3 parallel tracks</span><span
+                class="ai-tag">Scribe + skeptic per group</span><span class="ai-tag">Shadow Cost Worksheet</span><span
+                class="ai-tag">Pattern Decision Tree</span><span class="ai-tag">Governance Canvas</span></div>
+          </div>
+        </div>
+        <div class="ai">
+          <div>
+            <div class="ai-time">11:05 – 11:20</div>
+            <div class="ai-dur">15 min</div>
+          </div>
+          <div class="ai-body">
+            <h4>Results Presentation</h4>
+            <p>
+              Present the outputs of the working session, including the refined research questions and the completed
+              Governance Canvas. Discuss next steps for publication and collaboration.
+            </p>
+          </div>
+        </div>
+        <div class="ai">
+          <div>
+            <div class="ai-time">11:20 – 11:40</div>
+            <div class="ai-dur">20 min</div>
+          </div>
+          <div class="ai-body">
+            <h4>Invited talk 1 — Computing under Uncertainty on Edge-Cloud Platforms</h4>
+            <p>Presented by Dr. Daniel Balouek</p>
+            <!-- <div class="ai-tags"><span class="ai-tag">Invited talk · no Q&amp;A</div> -->
+          </div>
+        </div>
+        <div class="ai">
+          <div>
+            <div class="ai-time">11:40 – 12:00</div>
+            <div class="ai-dur">20 min</div>
+          </div>
+          <div class="ai-body">
+            <h4>Invited talk 2 — Why Architecture Matters in AI-Driven Reliability and Observability
+            </h4>
+            <p>Presented by Prof. Abdelwahab Hamou-Lhadj</p>
+            <!-- <p>The architectural response: what lifecycle policies look like in practice, how existing CSE patterns
+              create or suppress transparency debt, and what it would take to formalise XAI as a first-class quality
+              attribute.</p> -->
+            <!-- <div class="ai-tags"><span class="ai-tag">Invited talk · no Q&amp;A</div> -->
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div style="margin-top:64px;">
+        <span class="lbl">Facilitators</span>
+        <div class="fac-grid" style="margin-top:28px;">
+          <div class="fac">
+            <div class="fac-photo"></div>
+            <p class="fac-aff">Full Professor · Gina Cody School of Engineering and Computer Science · Concordia
+              University, Montréal</p>
+            <h3>Prof. Yan Liu</h3>
+            <p>Specialises in architecture-level quality assurance for AI-intensive systems. ICSE NIER 2026 work
+              formalises the redundancy cost function and the operational shadow of explainability.</p>
+            <div class="fac-links">
+              <a href="https://users.encs.concordia.ca/~liu/">Web Profile</a>
+              <a href="mailto:yan.liu@concordia.ca">yan.liu@concordia.ca</a>
+            </div>
+          </div>
+          <div class="fac">
+            <div class="fac-photo"></div>
+            <p class="fac-aff">Lecturer in Software Engineering · Queen's University Belfast</p>
+            <h3>Dr. Zheng Li</h3>
+            <p>Leads research in cloud-native software engineering and edge intelligence, focusing on architecture
+              design and quality assurance for AI-enabled systems in distributed environments.</p>
+            <div class="fac-links">
+              <a href="https://pure.qub.ac.uk/en/persons/zheng-li/">Web Profile</a>
+              <a href="mailto:zheng.li@qub.ac.uk">zheng.li@qub.ac.uk</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:64px;">
+        <span class="lbl">Guest Speakers</span>
+        <div class="fac-grid" style="margin-top:28px;">
+          <div class="fac">
+            <div class="fac-photo"></div>
+            <p class="fac-aff">Junior Research Scientist · Institut national de recherche en sciences et technologies du
+              numérique · France </p>
+            <p class="fac-aff">STACK team Member at IMT Atlantique in Nantes · France</p>
+            <h3>Dr. Daniel Balouek</h3>
+            <p>
+              Daniel Balouek is a Research Scientist at Inria, the French National Research Institute for Digital
+              Science and Technology. His research focuses on distributed computing and complex applications, with a
+              special emphasis on next-generation Utility Computing Infrastructures—encompassing Cloud, Edge, and
+              beyond—as well as Urgent Science. He is a co-recipient of an Outstanding Paper Award in Artificial
+              Intelligence for Social Impact at the AAAI Conference on Artificial Intelligence. He holds a PhD in
+              Computer Science from École Normale Supérieure de Lyon, France. His career has spanned institutions in
+              industry and academia across France, the USA, Japan, and India.
+            </p>
+            <div class="fac-links">
+              <a href="https://daniel-balouek.com/">Web Profile</a>
+              <a href="mailto:daniel.balouek@inria.fr">daniel.balouek@inria.fr</a>
+            </div>
+          </div>
+          <div class="fac">
+            <div class="fac-photo"></div>
+            <!-- <p class="fac-aff">Lecturer in Software Engineering · Queen's University Belfast</p> -->
+            <p class="fac-aff">Full Professor · Gina Cody School of Engineering and Computer Science · Concordia
+              University, Montréal</p>
+            <h3>Prof. Abdelwahab Hamou-Lhadj</h3>
+            <p>Dr. Wahab Hamou-Lhadj is Professor and Chair of the Department of Electrical and Computer Engineering at
+              Concordia University. He previously served as an Affiliate Researcher with the NASA Jet Propulsion Lab at
+              the California Institute of Technology from 2022 to 2025 and continues to collaborate with the lab on
+              advanced research initiatives. He leads a research group specializing in software observability, AI for IT
+              Operations (AIOps), software tracing and logging, and model-driven engineering. He is a Senior Member of
+              IEEE and a long-standing member of ACM. </p>
+            <div class="fac-links">
+              <a href="https://users.encs.concordia.ca/~abdelw/">Web Profile</a>
+              <a href="mailto:wahab.hamou-lhadj@concordia.ca">wahab.hamou-lhadj@concordia.ca</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-const dropdown = document.getElementById('shareDropdown');
-function toggleDropdown() { dropdown.classList.toggle('open'); }
-document.addEventListener('click', e => {
-  if (!document.getElementById('navShare').contains(e.target)) dropdown.classList.remove('open');
-});
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft-left">
+      <span class="ft-name">Architecting Explainability in CSE · ICSA 2026</span>
+      <span class="ft-copy">© 2026 Concordia University &amp; Queen's University Belfast · Working session materials
+        published after the session.</span>
+    </div>
+    <div class="ft-share">
+      <span class="ft-share-label">Share</span>
+      <a class="ft-share-btn" id="footerLinkedin" href="#" target="_blank" rel="noopener" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.45 20.45h-3.554v-5.57c0-1.328-.024-3.037-1.85-3.037-1.851 0-2.134 1.445-2.134 2.939v5.668H9.358V9h3.413v1.561h.047c.476-.9 1.637-1.85 3.368-1.85 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      </a>
+      <a class="ft-share-btn" id="footerTwitter" href="#" target="_blank" rel="noopener" title="X">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      </a>
+      <a class="ft-share-btn" id="footerBluesky" href="#" target="_blank" rel="noopener" title="Bluesky">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 01-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.621-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z" />
+        </svg>
+      </a>
+      <button class="ft-share-btn" onclick="copyLink()" title="Copy link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+        </svg>
+      </button>
+    </div>
+  </footer>
 
-function copyLink() {
-  navigator.clipboard.writeText(window.location.href).then(() => {
-    showToast('Link copied to clipboard');
-    dropdown.classList.remove('open');
-  }).catch(() => {
-    const el = document.createElement('textarea');
-    el.value = window.location.href;
-    document.body.appendChild(el); el.select();
-    document.execCommand('copy'); document.body.removeChild(el);
-    showToast('Link copied to clipboard');
-    dropdown.classList.remove('open');
-  });
-}
+  <script>
+    const PAGE_URL = encodeURIComponent(window.location.href);
+    const TWEET_TEXT = encodeURIComponent('Working session at #ICSA2026: Architecting Explainability in Continuous Software Engineering — Governing Its Shadow Impacts. Reframing XAI as an architectural quality attribute with real governance costs.');
+    const BSKY_TEXT = encodeURIComponent('Working session at ICSA 2026: Architecting Explainability in Continuous Software Engineering — Governing Its Shadow Impacts. Reframing XAI as a governed architectural quality attribute.');
+    const EMAIL_SUB = encodeURIComponent('ICSA 2026 Working Session: Architecting Explainability in CSE');
+    const EMAIL_BODY = encodeURIComponent('I thought you might find this working session interesting:\n\nArchitecting Explainability in Continuous Software Engineering: Governing Its Shadow Impacts\nICSA 2026 · Vrije Universiteit Amsterdam · 90 minutes\n\n' + window.location.href);
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
-}
+    function applyURLs() {
+      const li = 'https://www.linkedin.com/sharing/share-offsite/?url=' + PAGE_URL;
+      const tw = 'https://twitter.com/intent/tweet?text=' + TWEET_TEXT + '&url=' + PAGE_URL;
+      const bs = 'https://bsky.app/intent/compose?text=' + BSKY_TEXT + '%20' + PAGE_URL;
+      const em = 'mailto:?subject=' + EMAIL_SUB + '&body=' + EMAIL_BODY;
+      document.getElementById('linkedinShare').href = li;
+      document.getElementById('twitterShare').href = tw;
+      document.getElementById('blueskyShare').href = bs;
+      document.getElementById('emailShare').href = em;
+      document.getElementById('heroLinkedin').href = li;
+      document.getElementById('heroTwitter').href = tw;
+      document.getElementById('heroBluesky').href = bs;
+      document.getElementById('footerLinkedin').href = li;
+      document.getElementById('footerTwitter').href = tw;
+      document.getElementById('footerBluesky').href = bs;
+    }
+    applyURLs();
 
-const navLinks = document.querySelectorAll('.nav-links a');
-function setActive(id) {
-  navLinks.forEach(l => l.classList.remove('active'));
-  const m = document.querySelector('.nav-links a[href="#' + id + '"]');
-  if (m) m.classList.add('active');
-}
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
-}, { threshold: 0.25, rootMargin: '-52px 0px 0px 0px' });
-['objective','concepts','evidence','agenda'].forEach(id => {
-  const el = document.getElementById(id); if (el) obs.observe(el);
-});
-</script>
+    const dropdown = document.getElementById('shareDropdown');
+    function toggleDropdown() { dropdown.classList.toggle('open'); }
+    document.addEventListener('click', e => {
+      if (!document.getElementById('navShare').contains(e.target)) dropdown.classList.remove('open');
+    });
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast('Link copied to clipboard');
+        dropdown.classList.remove('open');
+      }).catch(() => {
+        const el = document.createElement('textarea');
+        el.value = window.location.href;
+        document.body.appendChild(el); el.select();
+        document.execCommand('copy'); document.body.removeChild(el);
+        showToast('Link copied to clipboard');
+        dropdown.classList.remove('open');
+      });
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    function setActive(id) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const m = document.querySelector('.nav-links a[href="#' + id + '"]');
+      if (m) m.classList.add('active');
+    }
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { threshold: 0.25, rootMargin: '-52px 0px 0px 0px' });
+    ['objective', 'concepts', 'evidence', 'agenda'].forEach(id => {
+      const el = document.getElementById(id); if (el) obs.observe(el);
+    });
+  </script>
 </body>
+
 </html>
